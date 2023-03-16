@@ -6,4 +6,4 @@ id AS payment_id
 , amount / 100 AS amount
 , created
 , _batched_at AS batched_at
-FROM raw.stripe.payment
+FROM {{ source('stripe', 'payment') }}
