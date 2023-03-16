@@ -1,0 +1,34 @@
+version: 2
+
+models:
+    - name: dim_customers
+      description: "customer_data"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+          - name: customer_id
+            description: "primary key"
+            tests:
+                - unique
+                - not_null
+          - name: first_name
+          - name: last_name
+          - name: first_order_date
+          - name: most_recent_order_date
+          - name: number_of_orders
+          - name: lifetime_value
+ 
+    - name: fct_orders
+      description: "order history"
+      columns:
+          - name: order_id
+            description: "primary key"
+            tests:
+                - unique
+                - not_null
+          - name: customer_id
+          - name: amount
+            

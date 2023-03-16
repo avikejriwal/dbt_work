@@ -21,7 +21,7 @@ customer_orders as (
         SUM(payments.amount) AS lifetime_value,
 
     from orders
-        LEFT JOIN payments ON payments.order_id = orders.order_id
+        LEFT JOIN {{ ref('stg_payments') }} AS payments ON payments.order_id = orders.order_id
 
     group by 1
 
