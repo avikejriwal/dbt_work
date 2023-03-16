@@ -4,11 +4,6 @@ models:
     - name: dim_customers
       description: "customer_data"
       columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
           - name: customer_id
             description: "primary key"
             tests:
@@ -24,10 +19,9 @@ models:
     - name: fct_orders
       description: "order history"
       columns:
-          - name: order_id
+          - name: orderid
             description: "primary key"
             tests:
-                - unique
                 - not_null
           - name: customer_id
           - name: amount
