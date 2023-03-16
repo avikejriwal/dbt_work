@@ -2,28 +2,23 @@ with customers as (
 
     select * from {{ ref('stg_customers')}}
 
-),
+)
 
-orders as (
-
-    select * from {{ ref('stg_orders') }}
-
-),
-
-customer_orders as (
+, customer_orders as (
 
     select
         customer_id,
 
-        min(order_date) as first_order_date,
-        max(order_date) as most_recent_order_date,
-        count(order_id) as number_of_orders,
-        SUM(payments.amount) AS lifetime_value,
+        MIN(order_date) as first_order_date,
+        MAX(order_date) as most_recent_order_date,
+        COUNT(order_id) as number_of_orders,
+        SUM(payments.amount) AS lifetime_value
 
-    from orders
-        LEFT JOIN {{ ref('stg_payments') }} AS payments ON payments.order_id = orders.order_id
+    FROM {{ ref('stg_orders') }} AS orders
+        LEFT JOIN {{ ref('stg_payments') }} AS payments
+        ON payments.orderid = orders.order_id
 
-    group by 1
+    GROUP BY 1
 
 ),
 

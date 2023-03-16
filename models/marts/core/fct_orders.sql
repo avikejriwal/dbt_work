@@ -13,10 +13,10 @@ orders as (
 final as (
 
     select
-        payments.order_id
+        payments.orderid
         , orders.customer_id
         , payments.amount
-    FROM payments JOIN orders ON payments.order_id = orders.order_id
+    FROM payments JOIN orders ON payments.orderid = orders.order_id
 
 )
 

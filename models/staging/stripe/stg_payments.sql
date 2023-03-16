@@ -1,1 +1,1 @@
-SELECT * FROM raw.stripe.payments;
+SELECT * FROM raw.stripe.payment
