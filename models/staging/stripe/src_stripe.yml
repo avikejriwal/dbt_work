@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: payments
+  - name: stripe
     database: raw
     schema: stripe
     tables:
